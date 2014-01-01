@@ -1,8 +1,8 @@
 require_relative 'test_helper'
 
-module Riff
+module Cardiff
   # test port of C# code using exact same unit tests as found in ported code
-  class PortTest < Riff::TestCase
+  class PortTest < Cardiff::TestCase
 
     test "all changes" do
       a = ('a'..'l').to_a.join("\n")

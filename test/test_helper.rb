@@ -1,9 +1,9 @@
 require 'minitest/autorun'
 
 $VERBOSE = 1
-require File.expand_path('../../lib/riff/diff', __FILE__)
+require File.expand_path('../../lib/cardiff', __FILE__)
 
-module Riff
+module Cardiff
   class TestCase < MiniTest::Unit::TestCase
 
     # taken from activesupport/testing/declarative

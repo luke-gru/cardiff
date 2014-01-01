@@ -1,15 +1,15 @@
-module Riff
+module Cardiff
   class DiffUtil
 
     # Does character by character diff, prints to STDOUT
-    # NOTE: not optimized
+    # NOTE: not very optimized
     def self.print_diff(adata, bdata)
       table = build_lcs_table(adata, bdata, adata.length, bdata.length)
       print_diff(table, adata, bdata, adata.length, bdata.length)
     end
 
     # Does character by character diff, returns String
-    # NOTE: not optimized
+    # NOTE: not very optimized
     def self.diff(adata, bdata)
       table = build_lcs_table(adata, bdata, adata.length, bdata.length)
       create_diff(table, adata, bdata, adata.length, bdata.length)

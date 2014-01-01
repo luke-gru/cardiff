@@ -1,4 +1,4 @@
-module Riff
+module Cardiff
   class DiffItem < Struct.new(:start_a, :start_b, :deleted_a, :inserted_b)
     def ==(other)
       unless DiffItem === other

@@ -1,7 +1,7 @@
 require_relative 'diff_data'
 require_relative 'diff_item'
 
-module Riff
+module Cardiff
   # Ruby port of C# code found at http://www.mathertel.de/Diff/Default.aspx
   # with minimal changes.
   #

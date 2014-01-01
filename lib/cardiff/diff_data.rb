@@ -1,4 +1,4 @@
-module Riff
+module Cardiff
   class DiffData < Struct.new(:data)
 
     attr_reader :length, :modified

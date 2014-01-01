@@ -5,7 +5,7 @@ module Cardiff
     # NOTE: not very optimized
     def self.print_diff(adata, bdata)
       table = build_lcs_table(adata, bdata, adata.length, bdata.length)
-      print_diff(table, adata, bdata, adata.length, bdata.length)
+      do_print_diff(table, adata, bdata, adata.length, bdata.length)
     end
 
     # Does character by character diff, returns String
@@ -47,16 +47,16 @@ module Cardiff
       ret
     end
 
-    def self.print_diff(lcs_table, adata, bdata, alen, blen)
+    def self.do_print_diff(lcs_table, adata, bdata, alen, blen)
       if alen > 0 && blen > 0 && adata[alen - 1] == bdata[blen - 1]
-        print_diff(lcs_table, adata, bdata, alen - 1, blen - 1)
+        do_print_diff(lcs_table, adata, bdata, alen - 1, blen - 1)
         print " " + adata[alen - 1]
       else
         if blen > 0 && (alen == 0 || lcs_table[alen][blen - 1] >= lcs_table[alen - 1][blen])
-          print_diff(lcs_table, adata, bdata, alen, blen - 1)
+          do_print_diff(lcs_table, adata, bdata, alen, blen - 1)
           print " +" + bdata[blen - 1]
         elsif alen > 0 && (blen == 0 || lcs_table[alen][blen - 1] < lcs_table[alen - 1][blen])
-          print_diff(lcs_table, adata, bdata, alen - 1, blen)
+          do_print_diff(lcs_table, adata, bdata, alen - 1, blen)
           print " -" + adata[alen - 1]
         end
       end

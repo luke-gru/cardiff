@@ -102,7 +102,6 @@ module Cardiff
       pos = 0
       aline = text_a
       bline = text_b
-      alen = aline.length
       blen = bline.length
 
       deletion_begin = self.class.diff_char_deletion_begin

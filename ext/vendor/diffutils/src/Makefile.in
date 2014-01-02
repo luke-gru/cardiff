@@ -853,7 +853,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 noinst_HEADERS = system.h
 AM_CPPFLAGS = -I../lib -I$(top_srcdir)/lib
-AM_CFLAGS = $(WARN_CFLAGS) $(WERROR_CFLAGS)
+AM_CFLAGS = $(WARN_CFLAGS) $(WERROR_CFLAGS) -fPIC
 LDADD = \
   ../lib/libdiffutils.a \
   $(LIBCSTACK) \
@@ -948,16 +948,16 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-cmp$(EXEEXT): $(cmp_OBJECTS) $(cmp_DEPENDENCIES) 
+cmp$(EXEEXT): $(cmp_OBJECTS) $(cmp_DEPENDENCIES)
 	@rm -f cmp$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(cmp_OBJECTS) $(cmp_LDADD) $(LIBS)
-diff$(EXEEXT): $(diff_OBJECTS) $(diff_DEPENDENCIES) 
+diff$(EXEEXT): $(diff_OBJECTS) $(diff_DEPENDENCIES)
 	@rm -f diff$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(diff_OBJECTS) $(diff_LDADD) $(LIBS)
-diff3$(EXEEXT): $(diff3_OBJECTS) $(diff3_DEPENDENCIES) 
+diff3$(EXEEXT): $(diff3_OBJECTS) $(diff3_DEPENDENCIES)
 	@rm -f diff3$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(diff3_OBJECTS) $(diff3_LDADD) $(LIBS)
-sdiff$(EXEEXT): $(sdiff_OBJECTS) $(sdiff_DEPENDENCIES) 
+sdiff$(EXEEXT): $(sdiff_OBJECTS) $(sdiff_DEPENDENCIES)
 	@rm -f sdiff$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(sdiff_OBJECTS) $(sdiff_LDADD) $(LIBS)
 

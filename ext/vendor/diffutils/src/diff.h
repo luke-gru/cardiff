@@ -371,3 +371,6 @@ void print_number_range (char, struct file_data *, lin, lin);
 void print_script (struct change *, struct change * (*) (struct change *), void (*) (struct change *));
 void setup_output (char const *, char const *, bool);
 void translate_range (struct file_data const *, lin, lin, long int *, long int *);
+
+/* diff.o */
+int compare_files (struct comparison const *, char const *, char const *);

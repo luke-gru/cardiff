@@ -901,10 +901,10 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = 1.5 gnits subdir-objects
-SUBDIRS = 
+SUBDIRS =
 noinst_HEADERS = cmpbuf.h prepargs.h
 noinst_LIBRARIES = libdiffutils.a
-noinst_LTLIBRARIES = 
+noinst_LTLIBRARIES =
 
 # This is for those projects which use "gettextize --intl" to put a source-code
 # copy of libintl into their package. In such projects, every Makefile.am needs
@@ -1003,11 +1003,11 @@ MOSTLYCLEANFILES = core *.stackdump alloca.h alloca.h-t arg-nonnull.h \
 MOSTLYCLEANDIRS = sys sys
 CLEANFILES = configmake.h configmake.h-t charset.alias ref-add.sed \
 	ref-del.sed
-DISTCLEANFILES = 
+DISTCLEANFILES =
 MAINTAINERCLEANFILES = iconv_open-aix.h iconv_open-hpux.h \
 	iconv_open-irix.h iconv_open-osf.h iconv_open-solaris.h
-AM_CPPFLAGS = 
-AM_CFLAGS = $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS)
+AM_CPPFLAGS =
+AM_CFLAGS = $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS) -fPIC
 libdiffutils_a_SOURCES = bitrotate.h c-ctype.h c-ctype.c c-stack.h \
 	c-stack.c c-strcase.h c-strcasecmp.c c-strncasecmp.c diffseq.h \
 	exitfail.c gettext.h ignore-value.h localcharset.h \
@@ -1086,7 +1086,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.hin $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status lib/config.h
-$(srcdir)/config.hin:  $(am__configure_deps) 
+$(srcdir)/config.hin:  $(am__configure_deps)
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@
@@ -1104,7 +1104,7 @@ uniwidth/$(DEPDIR)/$(am__dirstamp):
 	@: > uniwidth/$(DEPDIR)/$(am__dirstamp)
 uniwidth/width.$(OBJEXT): uniwidth/$(am__dirstamp) \
 	uniwidth/$(DEPDIR)/$(am__dirstamp)
-libdiffutils.a: $(libdiffutils_a_OBJECTS) $(libdiffutils_a_DEPENDENCIES) 
+libdiffutils.a: $(libdiffutils_a_OBJECTS) $(libdiffutils_a_DEPENDENCIES)
 	$(AM_V_at)-rm -f libdiffutils.a
 	$(AM_V_AR)$(libdiffutils_a_AR) libdiffutils.a $(libdiffutils_a_OBJECTS) $(libdiffutils_a_LIBADD)
 	$(AM_V_at)$(RANLIB) libdiffutils.a

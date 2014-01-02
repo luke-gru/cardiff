@@ -1,3 +1,11 @@
 /tmp
 /pkg
-lib/*.so
+*.so
+*.o
+*.a
+Makefile
+cmp
+diff
+diff3
+sdiff
+config.log

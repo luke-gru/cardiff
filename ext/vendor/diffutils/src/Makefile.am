@@ -21,8 +21,8 @@ noinst_HEADERS = system.h
 
 localedir = $(datadir)/locale
 
-AM_CPPFLAGS = -I../lib -I$(top_srcdir)/lib
-AM_CFLAGS = $(WARN_CFLAGS) $(WERROR_CFLAGS)
+AM_CPPFLAGS = -I../lib -I$(top_srcdir)/lib -fPIC
+AM_CFLAGS = $(WARN_CFLAGS) $(WERROR_CFLAGS) -fPIC
 
 LDADD = \
   ../lib/libdiffutils.a \

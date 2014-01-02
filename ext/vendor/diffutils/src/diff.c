@@ -63,7 +63,6 @@ struct regexp_list
   struct re_pattern_buffer *buf;
 };
 
-static int compare_files (struct comparison const *, char const *, char const *);
 static void add_regexp (struct regexp_list *, char const *);
 static void summarize_regexp_list (struct regexp_list *);
 static void specify_style (enum output_style);
@@ -74,7 +73,7 @@ static void usage (void);
 
 /* If comparing directories, compare their common subdirectories
    recursively.  */
-static bool recursive;
+static bool recursive = true;
 
 /* In context diffs, show previous lines that match these regexps.  */
 static struct regexp_list function_regexp_list;
@@ -85,7 +84,7 @@ static struct regexp_list ignore_regexp_list;
 #if O_BINARY
 /* Use binary I/O when reading and writing data (--binary).
    On POSIX hosts, this has no effect.  */
-static bool binary;
+static bool binary = false;
 #else
 enum { binary = true };
 #endif
@@ -93,18 +92,18 @@ enum { binary = true };
 /* When comparing directories, if a file appears only in one
    directory, treat it as present but empty in the other (-N).
    Then `patch' would create the file with appropriate contents.  */
-static bool new_file;
+static bool new_file = false;
 
 /* When comparing directories, if a file appears only in the second
    directory of the two, treat it as present but empty in the other
    (--unidirectional-new-file).
    Then `patch' would create the file with appropriate contents.  */
-static bool unidirectional_new_file;
+static bool unidirectional_new_file = false;
 
 /* Report files compared that are the same (-s).
    Normally nothing is output when that happens.  */
-static bool report_identical_files;
-
+static bool report_identical_files = true;
+
 static char const shortopts[] =
 "0123456789abBcC:dD:eEfF:hHiI:lL:nNpPqrsS:tTuU:vwW:x:X:y";
 
@@ -1005,7 +1004,7 @@ set_mtime_to_now (struct stat *st)
    Value is EXIT_SUCCESS if files are the same, EXIT_FAILURE if
    different, EXIT_TROUBLE if there is a problem opening them.  */
 
-static int
+int
 compare_files (struct comparison const *parent,
 	       char const *name0,
 	       char const *name1)
@@ -1146,35 +1145,39 @@ compare_files (struct comparison const *parent,
 	}
     }
 
-  if (status == EXIT_SUCCESS && ! parent && DIR_P (0) != DIR_P (1))
-    {
-      /* If one is a directory, and it was specified in the command line,
-	 use the file in that dir with the other file's basename.  */
+  //return 5;
 
-      int fnm_arg = DIR_P (0);
-      int dir_arg = 1 - fnm_arg;
-      char const *fnm = cmp.file[fnm_arg].name;
-      char const *dir = cmp.file[dir_arg].name;
-      char const *filename = cmp.file[dir_arg].name = free0
-	= dir_file_pathname (dir, last_component (fnm));
+  /*if (status == EXIT_SUCCESS && ! parent && DIR_P (0) != DIR_P (1))*/
+    /*{*/
+      /* If one is a directory, and it was specified in the command line,*/
+	 /*use the file in that dir with the other file's basename.  */
 
-      if (STREQ (fnm, "-"))
-	fatal ("cannot compare `-' to a directory");
+      /*int fnm_arg = DIR_P (0);*/
+      /*int dir_arg = 1 - fnm_arg;*/
+      /*char const *fnm = cmp.file[fnm_arg].name;*/
+      /*char const *dir = cmp.file[dir_arg].name;*/
+      /*char const *filename = cmp.file[dir_arg].name = free0*/
+	/*= dir_file_pathname (dir, last_component (fnm));*/
 
-      if (stat (filename, &cmp.file[dir_arg].stat) != 0)
-	{
-	  perror_with_name (filename);
-	  status = EXIT_TROUBLE;
-	}
-    }
+      /*if (STREQ (fnm, "-"))*/
+	/*fatal ("cannot compare `-' to a directory");*/
+
+      /*if (stat (filename, &cmp.file[dir_arg].stat) != 0)*/
+	/*{*/
+		/*perror_with_name (filename);*/
+		/*status = EXIT_TROUBLE;*/
+	/*}*/
+    /*}*/
 
   if (status != EXIT_SUCCESS)
     {
+        return 8;
       /* One of the files should exist but does not.  */
     }
   else if (cmp.file[0].desc == NONEXISTENT
 	   && cmp.file[1].desc == NONEXISTENT)
     {
+        return 6;
       /* Neither file "exists", so there's nothing to compare.  */
     }
   else if ((same_files

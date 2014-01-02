@@ -18,6 +18,8 @@
 include gnulib.mk
 
 noinst_HEADERS += cmpbuf.h prepargs.h
-libdiffutils_a_SOURCES += cmpbuf.c prepargs.c
+libdiffutils_a_SOURCES += cmpbuf.c prepargs.c analyze.c context.c diff.c diff.h dir.c ed.c ifdef.c io.c \
+													normal.c side.c util.c
 
-AM_CFLAGS += $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS)
+
+AM_CFLAGS += $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS) -fPIC

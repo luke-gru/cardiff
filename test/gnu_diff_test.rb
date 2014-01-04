@@ -17,5 +17,9 @@ module Cardiff
       assert_equal 1, GNUDiff.diff(File.expand_path('../test_helper.rb', __FILE__), File.expand_path('../port_test.rb', __FILE__))
     end
 
+    test "output unified option" do
+      assert_equal 1, GNUDiff.diff(File.expand_path('../test_helper.rb', __FILE__), File.expand_path('../port_test.rb', __FILE__), 'output_unified' => true)
+    end
+
   end
 end

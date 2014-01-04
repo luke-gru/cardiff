@@ -20,9 +20,5 @@ module Cardiff
       end
     end
 
-    def diff_ary(str_a, str_b)
-      Diff.diff_lines(str_a, str_b, false).map(&:to_a)
-    end
   end
-
 end

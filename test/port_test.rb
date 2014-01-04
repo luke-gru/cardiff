@@ -4,6 +4,10 @@ module Cardiff
   # test port of C# code using exact same unit tests as found in ported code
   class PortTest < Cardiff::TestCase
 
+    def diff_ary(str_a, str_b)
+      Diff.diff_lines(str_a, str_b, false).map(&:to_a)
+    end
+
     test "all changes" do
       a = ('a'..'l').to_a.join("\n")
       b = ('0'..'9').to_a.join("\n")

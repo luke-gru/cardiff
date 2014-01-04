@@ -1171,13 +1171,13 @@ compare_files (struct comparison const *parent,
 
   if (status != EXIT_SUCCESS)
     {
-        return 8;
+        //return 8;
       /* One of the files should exist but does not.  */
     }
   else if (cmp.file[0].desc == NONEXISTENT
 	   && cmp.file[1].desc == NONEXISTENT)
     {
-        return 6;
+        //return 6;
       /* Neither file "exists", so there's nothing to compare.  */
     }
   else if ((same_files

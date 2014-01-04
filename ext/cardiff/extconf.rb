@@ -9,7 +9,6 @@ vendor_diffutils_srcdir = File.join(vendor_diffutils_dir, 'src')
 vendor_diffutils_libdir = File.join(vendor_diffutils_dir, 'lib')
 
 Dir.chdir(vendor_diffutils_dir) do
-
   unless File.exist?(File.join(vendor_diffutils_libdir, 'config.h'))
     puts 'Running configure'
     system('./configure')
@@ -25,11 +24,6 @@ Dir.chdir(vendor_diffutils_dir) do
   unless status == 0
     abort "MAKE ERROR: make failed with status: #{status}"
   end
-end
-
-
-unless File.directory?(vendor_diffutils_srcdir)
-  abort "vendor/diffutils/scr not found"
 end
 
 HEADER_DIRS = [
@@ -62,15 +56,6 @@ LIBOBJS.each do |obj|
 end
 
 extension_name = 'cardiff_gnu_diff'
-
-#dir_config('libdiffutils', HEADER_DIRS, LIB_DIRS)
-
-#unless have_library('diffutils')
-  #abort "libdiffutils not found"
-#end
-
 dir_config(extension_name, HEADER_DIRS, LIB_DIRS)
-
 create_header
-
 create_makefile(extension_name)

@@ -26,7 +26,7 @@ static VALUE method_cardiff_gnu_diff_diff(int argc, VALUE *argv, VALUE self);
 void Init_cardiff_gnu_diff() {
     Cardiff = rb_define_module("Cardiff");
     GNUDiff = rb_define_module_under(Cardiff, "GNUDiff");
-    rb_define_singleton_method(GNUDiff, "diff", method_cardiff_gnu_diff_diff, -1);
+    rb_define_singleton_method(GNUDiff, "diff_raw", method_cardiff_gnu_diff_diff, -1);
 }
 
 static void parse_diff_options(VALUE hash_options) {
